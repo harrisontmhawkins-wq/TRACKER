@@ -1,1 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Orbitron", system-ui, sans-serif;
+}
 
+body {
+  background: radial-gradient(circle at top, #07111f 0, #02040a 60%, #000000 100%);
+  color: #cce7ff;
+  overflow: hidden;
+}
+
+#map {
+  position: fixed;
+  inset: 0;
+}
+
+/* HUD overlay */
+.hud-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hud-title {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 200, 255, 0.7);
+  background: linear-gradient(90deg, rgba(0, 40, 80, 0.9), rgba(0, 10, 30, 0.9));
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 14px;
+  color: #7fe3ff;
+  text-shadow: 0 0 8px #00c8ff;
+  pointer-events: auto;
+}
+
+/* Side panel */
+.hud-panel {
+  position: absolute;
+  top: 70px;
+  left: 24px;
+  width: 260px;
+  max-height: 60vh;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 200, 255, 0.4);
+  background: rgba(0, 10, 30, 0.85);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+  pointer-events: auto;
+}
+
+.hud-panel h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+  color: #8fe9ff;
+}
+
+#target-list {
+  list-style: none;
+  font-size: 12px;
+}
+
+#target-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 200, 255, 0.15);
+}
+
+#target-list li span.label {
+  color: #5fd0ff;
+}
+
+/* Status bar */
+.hud-status {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  padding: 6px 12px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-left: 2px solid #00c8ff;
+  background: rgba(0, 10, 30, 0.85);
+  pointer-events: auto;
+}
+
+/* Mapbox tweaks */
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-attrib {
+  display: none !important;
+}
