@@ -5,28 +5,26 @@
   <title>Jurassic Bubble Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Mapbox GL JS -->
+  <!-- Mapbox CSS -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.css" rel="stylesheet" />
+
+  <!-- Mapbox JS -->
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.16.1/mapbox-gl.js"></script>
 
-  <!-- Firebase (v9 modular) -->
+  <!-- Firebase -->
   <script type="module" src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
   <script type="module" src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Map -->
-  <div id="map"></div>
 
-  <!-- Grid overlay -->
+  <div id="map"></div>
   <div class="grid-overlay"></div>
 
-  <!-- HUD overlay -->
   <div class="hud-overlay">
     <div class="hud-title">
-      JURASSIC BUBBLE TRACKER
-      <span class="hud-subtitle blink">LIVE</span>
+      JURASSIC BUBBLE TRACKER <span class="hud-subtitle blink">LIVE</span>
     </div>
 
     <div class="hud-panel">
@@ -40,32 +38,28 @@
       <button id="leave-bubble-btn">Leave Bubble</button>
     </div>
 
-    <div class="hud-status" id="status">
-      SYSTEM BOOT: Awaiting user action...
-    </div>
+    <div class="hud-status" id="status">SYSTEM BOOT: Awaiting user action...</div>
   </div>
 
-  <!-- Config + app -->
-  <script type="module">
-    // ====== CONFIG PLACEHOLDERS ======
-    // 1) Mapbox
-    window.MAPBOX_TOKEN = "YOUR_MAPBOX_ACCESS_TOKEN_HERE";
+  <!-- CONFIG -->
+  <script>
+    window.MAPBOX_TOKEN = "REPLACE_WITH_YOUR_MAPBOX_TOKEN";
 
-    // 2) Firebase
     window.FIREBASE_CONFIG = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
+      apiKey: "REPLACE",
+      authDomain: "REPLACE",
+      databaseURL: "REPLACE",
+      projectId: "REPLACE",
+      storageBucket: "REPLACE",
+      messagingSenderId: "REPLACE",
+      appId: "REPLACE"
     };
 
-    // 3) Bubble ID (everyone using same ID shares a map)
     window.BUBBLE_ID = "main-bubble";
   </script>
 
+  <!-- APP -->
   <script type="module" src="app.js"></script>
+
 </body>
 </html>
