@@ -23,6 +23,7 @@ body {
   pointer-events: none;
 }
 
+/* Title bar */
 .hud-title {
   position: absolute;
   top: 16px;
@@ -36,6 +37,14 @@ body {
   color: #7fe3ff;
   text-shadow: 0 0 8px #00c8ff;
   pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-subtitle {
+  font-size: 10px;
+  color: #ff4b7a;
 }
 
 /* Side panel */
@@ -57,22 +66,70 @@ body {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   color: #8fe9ff;
+}
+
+.hud-panel-subtitle {
+  font-size: 10px;
+  color: #5fd0ff;
+  margin-bottom: 8px;
+  opacity: 0.8;
 }
 
 #target-list {
   list-style: none;
   font-size: 12px;
+  max-height: 45vh;
+  overflow-y: auto;
 }
 
 #target-list li {
   padding: 6px 0;
   border-bottom: 1px solid rgba(0, 200, 255, 0.15);
+  cursor: pointer;
 }
 
 #target-list li span.label {
   color: #5fd0ff;
+}
+
+#target-list li span.meta {
+  font-size: 10px;
+  color: #9bd9ff;
+}
+
+/* Controls */
+.hud-controls {
+  position: absolute;
+  top: 70px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.hud-controls button {
+  padding: 8px 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 200, 255, 0.7);
+  background: rgba(0, 20, 40, 0.9);
+  color: #cce7ff;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.hud-controls button:hover {
+  background: rgba(0, 60, 100, 0.9);
+  box-shadow: 0 0 12px rgba(0, 200, 255, 0.6);
+}
+
+.hud-controls button:active {
+  transform: scale(0.97);
 }
 
 /* Status bar */
@@ -89,8 +146,93 @@ body {
   pointer-events: auto;
 }
 
+/* Grid overlay */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 200, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: drift 20s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(40px, 40px); }
+}
+
+/* Pulsing marker */
+.marker-pulse {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00e5ff;
+  box-shadow: 0 0 12px #00e5ff;
+  position: relative;
+}
+
+.marker-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 229, 255, 0.7);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Friend marker */
+.marker-friend {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ff0066;
+  box-shadow: 0 0 10px #ff0066;
+}
+
+/* Blink */
+.blink {
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
 /* Mapbox tweaks */
 .mapboxgl-ctrl-logo,
 .mapboxgl-ctrl-attrib {
   display: none !important;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .hud-panel {
+    width: 70vw;
+  }
+
+  .hud-controls {
+    top: auto;
+    bottom: 80px;
+    right: 16px;
+    flex-direction: row;
+  }
+
+  .hud-controls button {
+    font-size: 9px;
+    padding: 6px 10px;
+  }
 }
